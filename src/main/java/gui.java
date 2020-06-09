@@ -2,6 +2,7 @@
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.JFileChooser;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,6 +33,7 @@ public class gui extends javax.swing.JFrame {
     private void initComponents() {
 
         jfcSourceFile = new javax.swing.JFileChooser();
+        jfcOutput = new javax.swing.JFileChooser();
         txtSourceLoc = new javax.swing.JTextField();
         btnSourceLoc = new javax.swing.JButton();
         txtOutputLoc = new javax.swing.JTextField();
@@ -64,6 +66,11 @@ public class gui extends javax.swing.JFrame {
         });
 
         btnOutputLoc.setText("Choose output folder");
+        btnOutputLoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOutputLocActionPerformed(evt);
+            }
+        });
 
         jrbBec.setSelected(true);
         jrbBec.setText("bec-tool");
@@ -145,6 +152,13 @@ public class gui extends javax.swing.JFrame {
           txtSourceLoc.setText(file.getAbsolutePath());
     }//GEN-LAST:event_btnSourceLocActionPerformed
 
+    private void btnOutputLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutputLocActionPerformed
+        jfcOutput.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = jfcOutput.showOpenDialog(this);
+        File directory = jfcOutput.getCurrentDirectory();
+        txtOutputLoc.setText(directory.getAbsolutePath());
+    }//GEN-LAST:event_btnOutputLocActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,6 +199,7 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton btnOutputLoc;
     private javax.swing.JButton btnSourceLoc;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JFileChooser jfcOutput;
     private javax.swing.JFileChooser jfcSourceFile;
     private javax.swing.JRadioButton jrbBec;
     private javax.swing.JRadioButton jrbPak;
