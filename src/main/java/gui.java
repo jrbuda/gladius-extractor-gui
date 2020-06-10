@@ -173,7 +173,7 @@ public class gui extends javax.swing.JFrame {
         int returnVal = jfcOutput.showOpenDialog(this);
         File directory = jfcOutput.getSelectedFile();
         txtOutputLoc.setText(directory.getAbsolutePath());
-        OutputLoc = directory.getAbsolutePath();
+        OutputLoc = directory.getAbsolutePath()+"/";
     }//GEN-LAST:event_btnOutputLocActionPerformed
 
     private void btnExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtractActionPerformed
