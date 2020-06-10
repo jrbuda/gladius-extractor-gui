@@ -129,16 +129,19 @@
     <Component class="javax.swing.JRadioButton" name="jrbPak">
       <Properties>
         <Property name="text" type="java.lang.String" value="pak-tool"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jrbTok">
       <Properties>
         <Property name="text" type="java.lang.String" value="tok-tool"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JRadioButton" name="jrbZlib">
       <Properties>
         <Property name="text" type="java.lang.String" value="zlib-tool"/>
+        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -150,6 +153,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Extract files"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExtractActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

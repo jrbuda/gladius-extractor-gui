@@ -1,7 +1,11 @@
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import javax.swing.JFileChooser;
 
 /*
@@ -16,6 +20,8 @@ import javax.swing.JFileChooser;
  */
 public class gui extends javax.swing.JFrame {
 
+    String SourceLoc = "";
+    String OutputLoc = "";
     /**
      * Creates new form gui
      */
@@ -76,14 +82,22 @@ public class gui extends javax.swing.JFrame {
         jrbBec.setText("bec-tool");
 
         jrbPak.setText("pak-tool");
+        jrbPak.setEnabled(false);
 
         jrbTok.setText("tok-tool");
+        jrbTok.setEnabled(false);
 
         jrbZlib.setText("zlib-tool");
+        jrbZlib.setEnabled(false);
 
         jLabel1.setText("Select a tool below:");
 
         btnExtract.setText("Extract files");
+        btnExtract.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExtractActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,7 +163,8 @@ public class gui extends javax.swing.JFrame {
         int returnVal = jfcSourceFile.showOpenDialog(this);
         File file = jfcSourceFile.getSelectedFile();
           // What to do with the file, e.g. display it in a TextArea
-          txtSourceLoc.setText(file.getAbsolutePath());
+        txtSourceLoc.setText(file.getAbsolutePath());
+        SourceLoc = file.getAbsolutePath();
     }//GEN-LAST:event_btnSourceLocActionPerformed
 
     private void btnOutputLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutputLocActionPerformed
@@ -157,7 +172,12 @@ public class gui extends javax.swing.JFrame {
         int returnVal = jfcOutput.showOpenDialog(this);
         File directory = jfcOutput.getSelectedFile();
         txtOutputLoc.setText(directory.getAbsolutePath());
+        OutputLoc = directory.getAbsolutePath();
     }//GEN-LAST:event_btnOutputLocActionPerformed
+
+    private void btnExtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExtractActionPerformed
+        runBec(SourceLoc, OutputLoc);
+    }//GEN-LAST:event_btnExtractActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +212,27 @@ public class gui extends javax.swing.JFrame {
                 new gui().setVisible(true);
             }
         });
+    }
+    
+    public void runBec(String SourceLoc, String OutputLoc){
+        String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        location = location.replaceAll("/", "\\\\");
+        Process process = null;
+        try{
+             process = Runtime.getRuntime().exec(new String[]{"cmd.exe python "+location + "bec-tool.py","-unpack", SourceLoc, OutputLoc, OutputLoc+ "\\gladius_bec_FileList.txt"});
+       }catch(Exception e) {
+          System.out.println("Exception Raised" + e.toString());
+       }
+       InputStream stdout = process.getInputStream();
+       BufferedReader reader = new BufferedReader(new InputStreamReader(stdout,StandardCharsets.UTF_8));
+       String line;
+       try{
+          while((line = reader.readLine()) != null){
+               System.out.println("stdout: "+ line);
+          }
+       }catch(IOException e){
+             System.out.println("Exception in reading output"+ e.toString());
+       }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
