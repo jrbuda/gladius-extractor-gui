@@ -292,7 +292,11 @@ public class gui extends javax.swing.JFrame {
         int lastSlash = location.lastIndexOf("/");
         location = location.substring(0, lastSlash+1);
         System.out.println(location);
-        System.out.println(location);
+        if(System.getProperty("os.name").contains("Windows")){
+            SourceLoc = SourceLoc.replaceAll("/", "\\\\");
+            OutputLoc = OutputLoc.replaceAll("/", "\\\\");
+            location = location.replaceAll("/", "\\\\");
+        }
         String[] cmdArray = new String[6];
         cmdArray[0] = "python";
         cmdArray[1] = location + "bec-tool.py";
@@ -326,38 +330,43 @@ public class gui extends javax.swing.JFrame {
     }
     
     public void packBec(String SourceLoc, String OutputLoc){
-               try{
-        String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-        int lastSlash = location.lastIndexOf("/");
-        location = location.substring(0, lastSlash+1);
-        System.out.println(location);
-        String[] cmdArray = new String[6];
-        cmdArray[0] = "python r";
-        cmdArray[1] = location + "bec-tool.py";
-        cmdArray[2] = "-pack";
-        cmdArray[3] = SourceLoc;
-        cmdArray[4] = OutputLoc+"/DATA.BEC";
-        cmdArray[5] = SourceLoc+"gladius_bec_FileList.txt";
-        Process process = Runtime.getRuntime().exec(cmdArray);
-        BufferedReader stdInput = new BufferedReader(new 
-         InputStreamReader(process.getInputStream()));
+        try{
+            String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            int lastSlash = location.lastIndexOf("/");
+            location = location.substring(0, lastSlash+1);
+            if(System.getProperty("os.name").contains("Windows")){
+                SourceLoc = SourceLoc.replaceAll("/", "\\\\");
+                OutputLoc = OutputLoc.replaceAll("/", "\\\\");
+                location = location.replaceAll("/", "\\\\");
+            }
+            System.out.println(location);
+            String[] cmdArray = new String[6];
+            cmdArray[0] = "python";
+            cmdArray[1] = location + "bec-tool.py";
+            cmdArray[2] = "-pack";
+            cmdArray[3] = SourceLoc;
+            cmdArray[4] = OutputLoc+"/DATA.BEC";
+            cmdArray[5] = SourceLoc+"gladius_bec_FileList.txt";
+            Process process = Runtime.getRuntime().exec(cmdArray);
+            BufferedReader stdInput = new BufferedReader(new 
+             InputStreamReader(process.getInputStream()));
 
-         BufferedReader stdError = new BufferedReader(new 
-              InputStreamReader(process.getErrorStream()));
+             BufferedReader stdError = new BufferedReader(new 
+                  InputStreamReader(process.getErrorStream()));
 
-         // Read the output from the command
-        System.out.println("Here is the standard output of the command:\n");
-        String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-        }
-        lblOutput.append("Finished repacking bec!\n");
+             // Read the output from the command
+            System.out.println("Here is the standard output of the command:\n");
+            String s = null;
+            while ((s = stdInput.readLine()) != null) {
+                System.out.println(s);
+            }
+            lblOutput.append("Finished repacking bec!\n");
 
-        // Read any errors from the attempted command
-        System.out.println("Here is the standard error of the command (if any):\n");
-        while ((s = stdError.readLine()) != null) {
-            lblOutput.append(s);
-        }
+            // Read any errors from the attempted command
+            System.out.println("Here is the standard error of the command (if any):\n");
+            while ((s = stdError.readLine()) != null) {
+                lblOutput.append(s);
+            }
         } catch (Exception ex){
             ex.printStackTrace();
         }
