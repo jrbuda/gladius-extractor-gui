@@ -155,7 +155,7 @@ public class gui extends javax.swing.JFrame {
     private void btnOutputLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOutputLocActionPerformed
         jfcOutput.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = jfcOutput.showOpenDialog(this);
-        File directory = jfcOutput.getCurrentDirectory();
+        File directory = jfcOutput.getSelectedFile();
         txtOutputLoc.setText(directory.getAbsolutePath());
     }//GEN-LAST:event_btnOutputLocActionPerformed
 
