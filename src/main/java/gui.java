@@ -287,7 +287,7 @@ public class gui extends javax.swing.JFrame {
     }
     
     public void unpackBec(String SourceLoc, String OutputLoc){
-       try{
+       /*try{
         String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         int lastSlash = location.lastIndexOf("/");
         location = location.substring(0, lastSlash+1);
@@ -326,7 +326,37 @@ public class gui extends javax.swing.JFrame {
         }
         } catch (Exception ex){
             ex.printStackTrace();
+        }*/
+        String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        int lastSlash = location.lastIndexOf("/");
+        location = location.substring(0, lastSlash+1);
+        System.out.println(location);
+        
+        try{
+            Process process = Runtime.getRuntime().exec("python \"" + location + "bec-tool.py -unpack "+SourceLoc + " " + OutputLoc + " gladius_bec_FileList.txt\"");
+        BufferedReader stdInput = new BufferedReader(new 
+         InputStreamReader(process.getInputStream()));
+
+         BufferedReader stdError = new BufferedReader(new 
+              InputStreamReader(process.getErrorStream()));
+
+         // Read the output from the command
+        System.out.println("Here is the standard output of the command:\n");
+        String s = null;
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+            lblOutput.setText("Finished unpacking!\n");
         }
+
+        // Read any errors from the attempted command
+        System.out.println("Here is the standard error of the command (if any):\n");
+        while ((s = stdError.readLine()) != null) {
+            lblOutput.append(s);
+        }
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        
     }
     
     public void packBec(String SourceLoc, String OutputLoc){
@@ -346,7 +376,9 @@ public class gui extends javax.swing.JFrame {
             cmdArray[2] = "-pack";
             cmdArray[3] = SourceLoc;
             cmdArray[4] = OutputLoc+"/DATA.BEC";
-            cmdArray[5] = SourceLoc+"gladius_bec_FileList.txt";
+            cmdArray[5] = SourceLoc+"gladius_bec_FileList.txt";/*
+            Process process = Runtime.getRuntime().exec("python \"" + location + "bec-tool.py\" -pack "+SourceLoc + " " + OutputLoc + "/DATA.BEC " + SourceLoc + "gladius_bec_FileList.txt\"");
+            */
             Process process = Runtime.getRuntime().exec(cmdArray);
             BufferedReader stdInput = new BufferedReader(new 
              InputStreamReader(process.getInputStream()));
