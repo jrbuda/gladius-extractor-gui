@@ -1,0 +1,47 @@
+/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home/jre/../bin/javadoc
+@options
+@argfile
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2020. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Gladius-extractor-tool 1.0 API'
+-linkoffline
+'https://docs.oracle.com/javase/8/docs/api' '/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Gladius-extractor-tool 1.0 API'
+'/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/src/main/java/gui.java'
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/src/main/java/.DS_Store = 1591806185000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/src/main/java/gui.form = 1591805696000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/src/main/java/gui.java = 1591805696000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/src/main/java = 1591806185000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/constant-values.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/overview-tree.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/index.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/package-use.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/allclasses-noframe.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/serialized-form.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/index-all.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/deprecated-list.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/script.js = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/package-frame.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/stylesheet.css = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/help-doc.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/package-summary.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/allclasses-frame.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/package-list = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/package-tree.html = 1591806797000
+/Users/josephbuda/Desktop/gladius-extractor-gui/gladius-extractor-gui/target/apidocs/gui.html = 1591806797000
