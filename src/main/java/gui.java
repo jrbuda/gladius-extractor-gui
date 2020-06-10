@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import static java.lang.System.console;
 import java.nio.charset.StandardCharsets;
 import javax.swing.JFileChooser;
 
@@ -215,14 +216,18 @@ public class gui extends javax.swing.JFrame {
     }
     
     public void runBec(String SourceLoc, String OutputLoc){
+        /* Neither of these work?????
+        System.out.println("Starting runBec");
         String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         location = location.replaceAll("/", "\\\\");
         Process process = null;
         try{
-             process = Runtime.getRuntime().exec(new String[]{"cmd.exe python "+location + "bec-tool.py","-unpack", SourceLoc, OutputLoc, OutputLoc+ "\\gladius_bec_FileList.txt"});
+            //process = Runtime.getRuntime().exec(new String[]{"cmd.exe python "+location + "bec-tool.py","-unpack", SourceLoc, OutputLoc, OutputLoc+ "\\gladius_bec_FileList.txt"});
+            process = Runtime.getRuntime().exec(new String[]{"cmd.exe", "/c" ,"python", location + "bec-tool.py -unpack "+SourceLoc +" "+ OutputLoc + " " + OutputLoc + "\\gladius_bec_FileList.txt"});
        }catch(Exception e) {
           System.out.println("Exception Raised" + e.toString());
        }
+       System.out.println("command loaded?");
        InputStream stdout = process.getInputStream();
        BufferedReader reader = new BufferedReader(new InputStreamReader(stdout,StandardCharsets.UTF_8));
        String line;
@@ -232,7 +237,23 @@ public class gui extends javax.swing.JFrame {
           }
        }catch(IOException e){
              System.out.println("Exception in reading output"+ e.toString());
-       }
+       }*/
+        //simpler way?
+        try{
+       String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+       String[] cmdArray = new String[8];
+       cmdArray[0] = "cmd.exe";
+       cmdArray[1] = "/c";
+       cmdArray[2] = "python";
+       cmdArray[3] = location + "bec-tool.py";
+       cmdArray[4] = "-unpack";
+       cmdArray[5] = SourceLoc;
+       cmdArray[6] = OutputLoc;
+       cmdArray[7] = "gladius_bec_FileList.txt";
+       Process process = Runtime.getRuntime().exec(cmdArray);
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
