@@ -241,15 +241,13 @@ public class gui extends javax.swing.JFrame {
         //simpler way?
         try{
        String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-       String[] cmdArray = new String[8];
-       cmdArray[0] = "cmd.exe";
-       cmdArray[1] = "/c";
-       cmdArray[2] = "python";
-       cmdArray[3] = location + "bec-tool.py";
-       cmdArray[4] = "-unpack";
-       cmdArray[5] = SourceLoc;
-       cmdArray[6] = OutputLoc;
-       cmdArray[7] = "gladius_bec_FileList.txt";
+       String[] cmdArray = new String[6];
+       cmdArray[0] = "python";
+       cmdArray[1] = location + "bec-tool.py";
+       cmdArray[2] = "-unpack";
+       cmdArray[3] = SourceLoc;
+       cmdArray[4] = OutputLoc;
+       cmdArray[5] = "gladius_bec_FileList.txt";
        Process process = Runtime.getRuntime().exec(cmdArray);
         } catch (Exception ex){
             ex.printStackTrace();
