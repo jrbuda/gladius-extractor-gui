@@ -220,7 +220,11 @@ public class gui extends javax.swing.JFrame {
             int returnVal = jfcSourceFile.showOpenDialog(this);
             File directory = jfcSourceFile.getSelectedFile();
             txtSourceLoc.setText(directory.getAbsolutePath());
-            SourceLoc = directory.getAbsolutePath()+"/";
+            if(System.getProperty("os.name").contains("Windows")){
+                SourceLoc = directory.getAbsolutePath()+"\\";
+            }else{
+                SourceLoc = directory.getAbsolutePath()+"/";
+            }
         }
     }//GEN-LAST:event_btnSourceLocActionPerformed
 
