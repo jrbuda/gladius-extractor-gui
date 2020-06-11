@@ -233,7 +233,11 @@ public class gui extends javax.swing.JFrame {
         int returnVal = jfcOutput.showOpenDialog(this);
         File directory = jfcOutput.getSelectedFile();
         txtOutputLoc.setText(directory.getAbsolutePath());
-        OutputLoc = directory.getAbsolutePath()+"/";
+        if(System.getProperty("os.name").contains("Windows")){
+            OutputLoc = directory.getAbsolutePath()+"\\";
+        }else{
+            OutputLoc = directory.getAbsolutePath()+"/";
+        }
     }//GEN-LAST:event_btnOutputLocActionPerformed
 
     private void btnRunToolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunToolActionPerformed
