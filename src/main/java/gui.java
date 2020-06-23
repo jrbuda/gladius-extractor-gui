@@ -295,7 +295,7 @@ public class gui extends javax.swing.JFrame {
     }
     
     public void unpackBec(String SourceLoc, String OutputLoc){
-       /*try{
+       try{
         String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         int lastSlash = location.lastIndexOf("/");
         location = location.substring(0, lastSlash+1);
@@ -324,8 +324,8 @@ public class gui extends javax.swing.JFrame {
         String s = null;
         while ((s = stdInput.readLine()) != null) {
             System.out.println(s);
-            lblOutput.setText("Finished unpacking!\n");
         }
+        lblOutput.setText("Finished unpacking!\n");
 
         // Read any errors from the attempted command
         System.out.println("Here is the standard error of the command (if any):\n");
@@ -334,7 +334,8 @@ public class gui extends javax.swing.JFrame {
         }
         } catch (Exception ex){
             ex.printStackTrace();
-        }*/
+        }
+        /*
         String location = gui.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         int lastSlash = location.lastIndexOf("/");
         location = location.substring(0, lastSlash+1);
@@ -363,7 +364,7 @@ public class gui extends javax.swing.JFrame {
         }
         } catch (Exception ex){
             ex.printStackTrace();
-        }
+        }*/
         
     }
     
