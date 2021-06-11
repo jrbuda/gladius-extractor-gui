@@ -1,1 +1,12 @@
 .DS_Store
+
+# Compiled class file
+*.class
+
+# target dir
+target/
+
+# Package files #
+*.jar
+*.zip
+*.tar.gz
