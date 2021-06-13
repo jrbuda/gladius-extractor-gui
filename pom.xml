@@ -22,7 +22,7 @@
           <manifest>
             <addClasspath>true</addClasspath>
             <classpathPrefix>lib/</classpathPrefix>
-            <mainClass>gui</mainClass>
+            <mainClass>com.budaslounge.gui.gui</mainClass>
           </manifest>
         </archive>
       </configuration>
