@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
 import javax.swing.JFileChooser;
+import javax.swing.JCheckBox;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.GroupLayout;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -54,6 +58,7 @@ public class gui extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lblOutput = new javax.swing.JTextArea();
+        chbGC = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,72 +134,78 @@ public class gui extends javax.swing.JFrame {
         lblOutput.setColumns(20);
         lblOutput.setRows(5);
         jScrollPane1.setViewportView(lblOutput);
+        
+        JCheckBox chbGC = new JCheckBox("Check if GC ISO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jrbBec)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrbPak))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jrbTok)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jrbZlib))
-                            .addComponent(jLabel1)
-                            .addComponent(btnRunTool, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jrbPack)
-                            .addComponent(jrbUnpack)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtSourceLoc)
-                            .addComponent(btnSourceLoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtOutputLoc)
-                            .addComponent(btnOutputLoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(jrbBec)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(jrbPak))
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(jrbTok)
+        							.addPreferredGap(ComponentPlacement.RELATED)
+        							.addComponent(jrbZlib))
+        						.addComponent(jLabel1)
+        						.addComponent(btnRunTool, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE))
+        					.addGap(18)
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(jLabel2)
+        						.addComponent(jrbPack)
+        						.addGroup(layout.createSequentialGroup()
+        							.addComponent(jrbUnpack)
+        							.addGap(50)
+        							.addComponent(chbGC))
+        						.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 270, GroupLayout.PREFERRED_SIZE))
+        					.addGap(20))
+        				.addGroup(layout.createSequentialGroup()
+        					.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        						.addComponent(txtSourceLoc, 428, 428, 428)
+        						.addComponent(btnSourceLoc, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
+        						.addComponent(txtOutputLoc, 428, 428, 428)
+        						.addComponent(btnOutputLoc, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE))
+        					.addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtSourceLoc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSourceLoc)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtOutputLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnOutputLoc)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbBec)
-                    .addComponent(jrbPak)
-                    .addComponent(jrbUnpack))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbTok)
-                    .addComponent(jrbZlib)
-                    .addComponent(jrbPack))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRunTool, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+        	layout.createParallelGroup(Alignment.LEADING)
+        		.addGroup(layout.createSequentialGroup()
+        			.addContainerGap()
+        			.addComponent(txtSourceLoc, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnSourceLoc)
+        			.addPreferredGap(ComponentPlacement.UNRELATED)
+        			.addComponent(txtOutputLoc, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addComponent(btnOutputLoc)
+        			.addGap(18)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jLabel1)
+        				.addComponent(jLabel2))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jrbBec)
+        				.addComponent(jrbPak)
+        				.addComponent(jrbUnpack)
+        				.addComponent(chbGC))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.BASELINE)
+        				.addComponent(jrbTok)
+        				.addComponent(jrbZlib)
+        				.addComponent(jrbPack))
+        			.addPreferredGap(ComponentPlacement.RELATED)
+        			.addGroup(layout.createParallelGroup(Alignment.LEADING)
+        				.addComponent(btnRunTool, GroupLayout.PREFERRED_SIZE, 49, GroupLayout.PREFERRED_SIZE)
+        				.addComponent(jScrollPane1, GroupLayout.PREFERRED_SIZE, 61, GroupLayout.PREFERRED_SIZE))
+        			.addContainerGap())
         );
+        getContentPane().setLayout(layout);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -300,13 +311,19 @@ public class gui extends javax.swing.JFrame {
                 location = location.substring(0, lastSlash+1);
             }
             System.out.println(location);
-            String[] cmdArray = new String[6];
+            String[] cmdArray = new String[7];
             cmdArray[0] = "python";
             cmdArray[1] = location + "bec-tool.py";
             cmdArray[2] = "-unpack";
             cmdArray[3] = SourceLoc;
             cmdArray[4] = OutputLoc;
             cmdArray[5] = "gladius_bec_FileList.txt";
+            boolean GC = chbGC.isSelected();
+            if(GC) {
+            	cmdArray[6] = "--GC";
+            }else {
+            	cmdArray[6] = "";
+            }
             Process process = Runtime.getRuntime().exec(cmdArray);
             BufferedReader stdInput = new BufferedReader(new
              InputStreamReader(process.getInputStream()));
@@ -352,6 +369,12 @@ public class gui extends javax.swing.JFrame {
             cmdArray[3] = SourceLoc;
             cmdArray[4] = OutputLoc+"/DATA.BEC";
             cmdArray[5] = SourceLoc+"gladius_bec_FileList.txt";
+            boolean GC = chbGC.isSelected();
+            if(GC) {
+            	cmdArray[6] = "--GC";
+            }else {
+            	cmdArray[6] = "";
+            }
             Process process = Runtime.getRuntime().exec(cmdArray);
             BufferedReader stdInput = new BufferedReader(new 
              InputStreamReader(process.getInputStream()));
@@ -397,5 +420,5 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JTextArea lblOutput;
     private javax.swing.JTextField txtOutputLoc;
     private javax.swing.JTextField txtSourceLoc;
-    // End of variables declaration//GEN-END:variables
+    private javax.swing.JCheckBox chbGC;
 }
