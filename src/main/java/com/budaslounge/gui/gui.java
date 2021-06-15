@@ -3,6 +3,7 @@ package com.budaslounge.gui;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import javax.swing.JFileChooser;
 import javax.swing.JCheckBox;
 import javax.swing.GroupLayout.Alignment;
@@ -135,7 +136,7 @@ public class gui extends javax.swing.JFrame {
         lblOutput.setRows(5);
         jScrollPane1.setViewportView(lblOutput);
         
-        JCheckBox chbGC = new JCheckBox("Check if GC ISO");
+        chbGC = new JCheckBox("Check if GC ISO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         layout.setHorizontalGroup(
@@ -311,19 +312,13 @@ public class gui extends javax.swing.JFrame {
                 location = location.substring(0, lastSlash+1);
             }
             System.out.println(location);
-            String[] cmdArray = new String[7];
+            String[] cmdArray = new String[6];
             cmdArray[0] = "python";
             cmdArray[1] = location + "bec-tool.py";
             cmdArray[2] = "-unpack";
             cmdArray[3] = SourceLoc;
             cmdArray[4] = OutputLoc;
             cmdArray[5] = "gladius_bec_FileList.txt";
-            boolean GC = chbGC.isSelected();
-            if(GC) {
-            	cmdArray[6] = "--GC";
-            }else {
-            	cmdArray[6] = "";
-            }
             Process process = Runtime.getRuntime().exec(cmdArray);
             BufferedReader stdInput = new BufferedReader(new
              InputStreamReader(process.getInputStream()));
@@ -362,7 +357,7 @@ public class gui extends javax.swing.JFrame {
                 location = location.substring(0, lastSlash+1);
             }
             System.out.println(location);
-            String[] cmdArray = new String[6];
+            String[] cmdArray = new String[7];
             cmdArray[0] = "python";
             cmdArray[1] = location + "bec-tool.py";
             cmdArray[2] = "-pack";
@@ -370,10 +365,10 @@ public class gui extends javax.swing.JFrame {
             cmdArray[4] = OutputLoc+"/DATA.BEC";
             cmdArray[5] = SourceLoc+"gladius_bec_FileList.txt";
             boolean GC = chbGC.isSelected();
-            if(GC) {
-            	cmdArray[6] = "--GC";
-            }else {
-            	cmdArray[6] = "";
+            if (GC) {
+            	cmdArray[6] = "--gc";
+            } else {
+                cmdArray = Arrays.copyOf(cmdArray, 6);
             }
             Process process = Runtime.getRuntime().exec(cmdArray);
             BufferedReader stdInput = new BufferedReader(new 
