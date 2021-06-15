@@ -312,13 +312,19 @@ public class gui extends javax.swing.JFrame {
                 location = location.substring(0, lastSlash+1);
             }
             System.out.println(location);
-            String[] cmdArray = new String[6];
+            String[] cmdArray = new String[7];
             cmdArray[0] = "python";
             cmdArray[1] = location + "bec-tool.py";
             cmdArray[2] = "-unpack";
             cmdArray[3] = SourceLoc;
             cmdArray[4] = OutputLoc;
             cmdArray[5] = "gladius_bec_FileList.txt";
+            boolean GC = chbGC.isSelected();
+            if (GC) {
+            	cmdArray[6] = "--gc";
+            } else {
+                cmdArray = Arrays.copyOf(cmdArray, 6);
+            }
             Process process = Runtime.getRuntime().exec(cmdArray);
             BufferedReader stdInput = new BufferedReader(new
              InputStreamReader(process.getInputStream()));
